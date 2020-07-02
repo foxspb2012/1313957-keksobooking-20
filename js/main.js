@@ -4,6 +4,7 @@ var MAP_ADS = 8;
 var map = document.querySelector('.map');
 map.classList.remove('map--faded');
 
+var template = document.querySelector('#pin').content.querySelector('button');
 var mapPins = document.querySelector('.map__pins');
 
 var getLocation = function () {
@@ -24,13 +25,14 @@ var getRandomItems = function (items, num) {
   return items.splice(Math.floor(Math.random() * num));
 };
 
+var types = ['palace', 'flat', 'house', 'bungalo'];
+var checkin = ['12:00', '13:00', '14:00'];
+var checkout = ['12:00', '13:00', '14:00'];
+var features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+var housePhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+
 var getMapAd = function () {
   var pinsData = [];
-  var types = ['palace', 'flat', 'house', 'bungalo'];
-  var checkin = ['12:00', '13:00', '14:00'];
-  var checkout = ['12:00', '13:00', '14:00'];
-  var features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-  var housePhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
   for (var i = 0; i < MAP_ADS; i++) {
     var imgNumber = i + 1;
@@ -63,7 +65,6 @@ var getMapAd = function () {
 };
 
 var getMapPin = function (data) {
-  var template = document.querySelector('#pin').content.querySelector('button');
   var fragment = document.createDocumentFragment();
 
   for (var j = 0; j < data.length; j++) {
