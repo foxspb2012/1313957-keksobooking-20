@@ -57,7 +57,7 @@
     guestEnding: guestEnding,
     getRandomInteger: getRandomInteger,
     getRandomItem: getRandomItem,
-    getRandomItems: getRandomItems,
+    getRandomItems: getRandomItems
   };
 
 })();
