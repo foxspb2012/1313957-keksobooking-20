@@ -2,6 +2,15 @@
 
 (function () {
 
+  var nameRealty = {
+    bungalo: 'Бунгало',
+    flat: 'Квартира',
+    house: 'Дом',
+    palace: 'Дворец'
+  };
+
+  var features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+
   var roomEnding = function (rooms) {
     var lastDigit = rooms;
     if (rooms > 20) {
@@ -53,6 +62,8 @@
   };
 
   window.extension = {
+    nameRealty: nameRealty,
+    features: features,
     roomEnding: roomEnding,
     guestEnding: guestEnding,
     getRandomInteger: getRandomInteger,
