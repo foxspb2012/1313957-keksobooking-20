@@ -87,7 +87,7 @@
     createPopupAvatar(data.author.avatar, cardElement);
     checkingDataAndCreateElement(cardElement.querySelector('.popup__title'), newCard.title, true, newCard.title);
     checkingDataAndCreateElement(cardElement.querySelector('.popup__text--address'), newCard.address, true, newCard.address);
-    checkingDataAndCreateElement(cardElement.querySelector('.popup__text--price'), newCard.price + '&#8381/ночь', false, newCard.price + '&#8381/ночь');
+    checkingDataAndCreateElement(cardElement.querySelector('.popup__text--price'), newCard.price + '₽/ночь', false, newCard.price + '₽/ночь');
     checkingDataAndCreateElement(cardElement.querySelector('.popup__type'), window.extension.nameRealty[newCard.type], true, window.extension.nameRealty[newCard.type]);
     var textCapacity = newCard.rooms + ' комнат' + window.extension.roomEnding(newCard.rooms) + ' для ' + newCard.guests + ' гост' + window.extension.guestEnding(newCard.guests);
     checkingDataAndCreateElement(cardElement.querySelector('.popup__text--capacity'), newCard.rooms, true, textCapacity);
