@@ -1,8 +1,6 @@
 'use strict';
 
 (function () {
-  var MAP_ADS = 8;
-
   var map = document.querySelector('.map');
   var mainPin = map.querySelector('.map__pin--main');
   var form = document.querySelector('.ad-form');
@@ -50,8 +48,7 @@
   var unlockPage = function () {
     window.form.changeAddress();
     map.classList.remove('map--faded');
-    var pins = window.data.getPins(MAP_ADS);
-    window.pin.renderPins(pins);
+    window.pin.renderPins();
     form.classList.remove('ad-form--disabled');
     formControls.forEach(function (control) {
       control.disabled = false;
