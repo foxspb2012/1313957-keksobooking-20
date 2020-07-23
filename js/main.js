@@ -73,7 +73,7 @@
     window.form.setFormCapacity();
     mainPin.addEventListener('mousedown', onMainPinMousedown);
     mainPin.addEventListener('keydown', onMainPinEnterPress);
-
+    map.classList.add('map--faded');
   };
 
   var unlockPage = function () {
