@@ -104,6 +104,6 @@
   window.form = {
     setAddress: setAddress,
     changeAddress: changeAddress,
-    setFormCapacity: setFormCapacity
+    setFormCapacity: setFormCapacity,
   };
 })();

@@ -114,6 +114,7 @@
   };
 
   window.card = {
-    openCard: openCard
+    openCard: openCard,
+    closeCard: closeCard
   };
 })();
