@@ -7,13 +7,19 @@
   var mainPin = map.querySelector('.map__pin--main');
   var form = document.querySelector('.ad-form');
   var formControls = form.querySelectorAll('[name]');
-  var formButtons = form.querySelectorAll('.ad-form__element--submit button');
   var filter = document.querySelector('.map__filters');
   var filterControls = filter.querySelectorAll('[name]');
   var formReset = form.querySelector('.ad-form__reset');
+  var formSubmit = form.querySelector('.ad-form__submit');
+  var filterType = filter.querySelector('#housing-type');
+  var pins = [];
 
   var onLoadSuccess = function (data) {
-    window.pin.renderPins(data);
+    pins = data;
+    renderPins();
+    filterControls.forEach(function (control) {
+      control.disabled = false;
+    });
   };
 
   var onLoadError = function (errorText) {
@@ -58,15 +64,16 @@
     filterControls.forEach(function (control) {
       control.disabled = true;
     });
-    formButtons.forEach(function (button) {
-      button.disabled = true;
-    });
+    formSubmit.blur();
+    formSubmit.disabled = true;
+    formReset.disabled = true;
     mainPin.style.top = PIN_Y + 'px';
     mainPin.style.left = PIN_X + 'px';
     window.form.setAddress();
     window.form.setFormCapacity();
     mainPin.addEventListener('mousedown', onMainPinMousedown);
     mainPin.addEventListener('keydown', onMainPinEnterPress);
+
   };
 
   var unlockPage = function () {
@@ -77,15 +84,23 @@
     formControls.forEach(function (control) {
       control.disabled = false;
     });
-    formButtons.forEach(function (button) {
-      button.disabled = false;
-    });
-    filterControls.forEach(function (control) {
-      control.disabled = false;
-    });
+    formSubmit.disabled = false;
+    formReset.disabled = false;
     window.form.changeAddress();
     mainPin.removeEventListener('mousedown', onMainPinMousedown);
     mainPin.removeEventListener('keydown', onMainPinEnterPress);
+  };
+
+  var renderPins = function () {
+    var filteredPins = pins;
+    var type = filterType.value;
+    if (type !== 'any') {
+      filteredPins = filteredPins.filter(function (pin) {
+        return pin.offer.type === type;
+      });
+    }
+    window.pin.deletePins();
+    window.pin.renderPins(filteredPins);
   };
 
   form.addEventListener('submit', function (evt) {
@@ -96,6 +111,11 @@
   formReset.addEventListener('click', function (evt) {
     evt.preventDefault();
     lockPage();
+  });
+
+  filterType.addEventListener('change', function () {
+    window.card.close();
+    renderPins();
   });
 
   lockPage();

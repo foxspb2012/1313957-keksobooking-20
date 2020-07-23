@@ -40,6 +40,7 @@
     }
     document.removeEventListener('click', onSuccessClick);
     document.removeEventListener('keydown', onSuccessEscPress);
+    document.querySelector('.map').classList.add('map--faded');
   };
 
   var showError = function () {

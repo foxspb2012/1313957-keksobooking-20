@@ -11,7 +11,7 @@
     OK: 200
   };
 
-  var load = function (onLoad, onError) {
+  var sendRequest = function (url, method, data, onLoad, onError) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load', function () {
       if (xhr.status === statusCode.OK) {
@@ -28,29 +28,16 @@
     });
     xhr.responseType = 'json';
     xhr.timeout = TIMEOUT;
-    xhr.open('GET', HTTPMethods.GET);
-    xhr.send();
+    xhr.open(method, url);
+    xhr.send(data);
+  };
+
+  var load = function (onLoad, onError) {
+    sendRequest(HTTPMethods.GET, 'GET', null, onLoad, onError);
   };
 
   var upload = function (data, onLoad, onError) {
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', function () {
-      if (xhr.status === statusCode.OK) {
-        onLoad();
-      } else {
-        onError();
-      }
-    });
-    xhr.addEventListener('error', function () {
-      onError();
-    });
-    xhr.addEventListener('timeout', function () {
-      onError();
-    });
-    xhr.responseType = 'json';
-    xhr.timeout = TIMEOUT;
-    xhr.open('POST', HTTPMethods.POST);
-    xhr.send(data);
+    sendRequest(HTTPMethods.POST, 'POST', data, onLoad, onError);
   };
 
   window.data = {
