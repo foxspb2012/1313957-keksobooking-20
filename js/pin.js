@@ -4,6 +4,7 @@
   var PIN_HEIGHT = 70;
   var PIN_WIDTH = 50;
   var map = document.querySelector('.map');
+  var PIN_COUNT = 5;
 
   var createPin = function (pin) {
     var template = document.querySelector('#pin').content.querySelector('.map__pin');
@@ -21,7 +22,8 @@
   var renderPins = function (pins) {
     var mapPins = document.querySelector('.map__pins');
     var fragment = document.createDocumentFragment();
-    pins.forEach(function (pin) {
+    var count = pins.length > PIN_COUNT ? PIN_COUNT : pins.length;
+    pins.slice(0, count).forEach(function (pin) {
       fragment.appendChild(createPin(pin));
     });
     mapPins.appendChild(fragment);
