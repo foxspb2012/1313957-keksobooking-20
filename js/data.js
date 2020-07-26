@@ -42,6 +42,6 @@
 
   window.data = {
     load: load,
-    upload: upload,
+    upload: upload
   };
 })();
