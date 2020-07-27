@@ -4,7 +4,7 @@
   var MAIN_PIN_WIDTH = 65;
   var MAIN_PIN_HEIGHT = 84;
   var ROUND_MAIN_PIN_HEIGHT = 65;
-  var FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif'];
+  var FILE_TYPES = ['jpeg', 'jpg', 'png', 'gif'];
 
   var map = document.querySelector('.map');
   var mainPin = map.querySelector('.map__pin--main');
