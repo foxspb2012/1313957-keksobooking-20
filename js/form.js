@@ -81,6 +81,10 @@
     }
   };
 
+  formType.addEventListener('change', function () {
+    setFormPrice();
+  });
+
   formPrice.addEventListener('input', function () {
     validFormPrice();
   });

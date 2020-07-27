@@ -1,18 +1,18 @@
 'use strict';
 
 (function () {
+  var FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif'];
   var AVATAR_WIDTH = 40;
   var AVATAR_HEIGHT = 40;
   var HOUSING_WIDTH = 70;
   var HOUSING_HEIGHT = 70;
-  var FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif'];
+  var AVATAR_DEFAULT = 'img/muffin-grey.svg';
 
   var avatarFileChooser = document.querySelector('.ad-form__field input[type=file]');
   var avatarPreview = document.querySelector('.ad-form-header__preview');
   var avatarPreviewImg = document.querySelector('.ad-form-header__preview img');
   var housingFileChooser = document.querySelector('.ad-form__upload input[type=file]');
   var housingPreview = document.querySelector('.ad-form__photo');
-  var avatarDefault = 'img/muffin-grey.svg';
 
   var fileReader = function (fileChooser, preview, imgWidth, imgHeight) {
     var file = fileChooser.files[0];
@@ -39,7 +39,7 @@
   };
 
   var remove = function () {
-    avatarPreviewImg.src = avatarDefault;
+    avatarPreviewImg.src = AVATAR_DEFAULT;
     avatarPreviewImg.width = AVATAR_WIDTH;
     avatarPreviewImg.height = AVATAR_HEIGHT;
     avatarPreview.innerHTML = '';
