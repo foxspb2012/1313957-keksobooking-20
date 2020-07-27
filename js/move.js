@@ -7,6 +7,7 @@
   var PIN_LOCATION_X_MAX = 1200;
   var PIN_LOCATION_Y_MIN = 130;
   var PIN_LOCATION_Y_MAX = 630;
+
   var pin = document.querySelector('.map__pin--main');
 
   pin.addEventListener('mousedown', function (evt) {

@@ -3,6 +3,7 @@
 (function () {
   var PIN_X = 570;
   var PIN_Y = 375;
+
   var map = document.querySelector('.map');
   var mainPin = map.querySelector('.map__pin--main');
   var form = document.querySelector('.ad-form');

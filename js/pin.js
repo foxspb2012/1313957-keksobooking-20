@@ -1,10 +1,11 @@
 'use strict';
 
 (function () {
+  var PIN_COUNT = 5;
   var PIN_HEIGHT = 70;
   var PIN_WIDTH = 50;
+
   var map = document.querySelector('.map');
-  var PIN_COUNT = 5;
 
   var createPin = function (pin) {
     var template = document.querySelector('#pin').content.querySelector('.map__pin');
@@ -40,6 +41,6 @@
 
   window.pin = {
     renderPins: renderPins,
-    deletePins: deletePins,
+    deletePins: deletePins
   };
 })();
