@@ -11,7 +11,8 @@
   var filterControls = filter.querySelectorAll('[name]');
   var formReset = form.querySelector('.ad-form__reset');
   var formSubmit = form.querySelector('.ad-form__submit');
-  var filterType = filter.querySelector('#housing-type');
+  var filterForm = document.querySelector('.map__filters');
+
   var pins = [];
 
   var onLoadSuccess = function (data) {
@@ -74,6 +75,7 @@
     mainPin.addEventListener('mousedown', onMainPinMousedown);
     mainPin.addEventListener('keydown', onMainPinEnterPress);
     map.classList.add('map--faded');
+    window.photoloader.remove();
   };
 
   var unlockPage = function () {
@@ -92,13 +94,7 @@
   };
 
   var renderPins = function () {
-    var filteredPins = pins;
-    var type = filterType.value;
-    if (type !== 'any') {
-      filteredPins = filteredPins.filter(function (pin) {
-        return pin.offer.type === type;
-      });
-    }
+    var filteredPins = window.filter.getFilteredData(pins);
     window.pin.deletePins();
     window.pin.renderPins(filteredPins);
   };
@@ -113,8 +109,8 @@
     lockPage();
   });
 
-  filterType.addEventListener('change', function () {
-    window.card.close();
+  filterForm.addEventListener('change', function () {
+    window.card.closeCard();
     renderPins();
   });
 

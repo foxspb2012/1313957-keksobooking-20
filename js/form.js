@@ -81,10 +81,6 @@
     }
   };
 
-  formType.addEventListener('change', function () {
-    setFormPrice();
-  });
-
   formPrice.addEventListener('input', function () {
     validFormPrice();
   });
@@ -104,6 +100,6 @@
   window.form = {
     setAddress: setAddress,
     changeAddress: changeAddress,
-    setFormCapacity: setFormCapacity,
+    setFormCapacity: setFormCapacity
   };
 })();
