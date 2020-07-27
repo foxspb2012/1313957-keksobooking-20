@@ -1,11 +1,11 @@
 'use strict';
 
 (function () {
+  var FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif'];
   var AVATAR_WIDTH = 40;
   var AVATAR_HEIGHT = 40;
   var HOUSING_WIDTH = 70;
   var HOUSING_HEIGHT = 70;
-  var FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif'];
 
   var avatarFileChooser = document.querySelector('.ad-form__field input[type=file]');
   var avatarPreview = document.querySelector('.ad-form-header__preview');
