@@ -4,7 +4,6 @@
   var MAIN_PIN_WIDTH = 65;
   var MAIN_PIN_HEIGHT = 84;
   var ROUND_MAIN_PIN_HEIGHT = 65;
-  var FILE_TYPES = ['jpeg', 'jpg', 'png', 'gif'];
 
   var map = document.querySelector('.map');
   var mainPin = map.querySelector('.map__pin--main');
@@ -16,11 +15,6 @@
   var formTimeout = form.querySelector('#timeout');
   var formRoom = form.querySelector('#room_number');
   var formCapacity = form.querySelector('#capacity');
-  var avatarControl = form.querySelector('#avatar');
-  var avatarPreview = form.querySelector('.ad-form-header__preview img');
-  var imagesControl = form.querySelector('#images');
-  var imagesPreview = form.querySelector('.ad-form__photo');
-  var avatarDefault = 'img/muffin-grey.svg';
 
   var priceRealty = {
     bungalo: 0,
@@ -87,56 +81,6 @@
     }
   };
 
-  var validFileType = function (file) {
-    var fileName = file.name.toLowerCase();
-    var matches = FILE_TYPES.some(function (item) {
-      return fileName.endsWith(item);
-    });
-    return matches;
-  };
-
-  var updateAvatar = function () {
-    var file = avatarControl.files[0];
-    if (file) {
-      if (validFileType(file)) {
-        var reader = new FileReader();
-        reader.addEventListener('load', function () {
-          avatarPreview.src = reader.result;
-        });
-        reader.readAsDataURL(file);
-      }
-    } else {
-      avatarPreview.src = avatarDefault;
-    }
-  };
-
-  var updateImages = function () {
-    var file = imagesControl.files[0];
-    if (file) {
-      if (validFileType(file)) {
-        var reader = new FileReader();
-        reader.addEventListener('load', function () {
-          imagesPreview.style.backgroundImage = 'url(' + reader.result + ')';
-        });
-        reader.readAsDataURL(file);
-      }
-    } else {
-      imagesPreview.removeAttribute('style');
-    }
-  };
-
-  avatarControl.addEventListener('change', function () {
-    updateAvatar();
-  });
-
-  imagesControl.addEventListener('change', function () {
-    updateImages();
-  });
-
-  formType.addEventListener('change', function () {
-    setFormPrice();
-  });
-
   formPrice.addEventListener('input', function () {
     validFormPrice();
   });
@@ -156,8 +100,6 @@
   window.form = {
     setAddress: setAddress,
     changeAddress: changeAddress,
-    setFormCapacity: setFormCapacity,
-    updateAvatar: updateAvatar,
-    updateImages: updateImages
+    setFormCapacity: setFormCapacity
   };
 })();

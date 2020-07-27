@@ -57,8 +57,6 @@
     window.card.closeCard();
     window.pin.deletePins();
     form.reset();
-    window.form.updateAvatar();
-    window.form.updateImages();
     form.classList.add('ad-form--disabled');
     formControls.forEach(function (control) {
       control.disabled = true;
@@ -77,6 +75,7 @@
     mainPin.addEventListener('mousedown', onMainPinMousedown);
     mainPin.addEventListener('keydown', onMainPinEnterPress);
     map.classList.add('map--faded');
+    window.photoloader.remove();
   };
 
   var unlockPage = function () {
