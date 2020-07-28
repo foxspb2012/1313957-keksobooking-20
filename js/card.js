@@ -41,8 +41,16 @@
     }
   };
 
+  var removeClassActive = function () {
+    var pinActive = map.querySelector('.map__pin--active');
+    if (pinActive) {
+      pinActive.classList.remove('map__pin--active');
+    }
+  };
+
   var closePopup = function () {
     removePopup();
+    removeClassActive();
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -110,12 +118,7 @@
     if (card) {
       card.remove();
     }
-
-    var pinActive = map.querySelector('.map__pin--active');
-    if (pinActive) {
-      pinActive.classList.remove('map__pin--active');
-    }
-
+    removeClassActive();
     document.removeEventListener('keydown', onMapCardEscPress);
   };
 
