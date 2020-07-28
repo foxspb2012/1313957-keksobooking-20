@@ -5,8 +5,8 @@
   var map = document.querySelector('.map');
 
   var onMapCardEscPress = function (evt) {
-    if (evt.code === 'Escape') {
-      closeCard();
+    if (evt.code === window.extension.keyCode['escape']) {
+      close();
     }
   };
 
@@ -35,7 +35,7 @@
   };
 
   var onPopupEscPress = function (evt) {
-    if (evt.key === 'Escape') {
+    if (evt.key === window.extension.keyCode['escape']) {
       evt.preventDefault();
       closePopup();
     }
@@ -73,12 +73,12 @@
     var cardElement = template.cloneNode(true);
     var closeCardButton = cardElement.querySelector('.popup__close');
     closeCardButton.addEventListener('click', function () {
-      closeCard();
+      close();
       closePopup();
     });
 
     closeCardButton.addEventListener('keydown', function (evt) {
-      if (evt.key === 'Enter') {
+      if (evt.key === window.extension.keyCode['enter']) {
         closePopup();
       }
     });
@@ -99,22 +99,28 @@
     map.insertBefore(cardElement, mapFilters);
   };
 
-  var openCard = function (pin) {
-    closeCard();
+  var open = function (pin) {
+    close();
     renderNewCard(pin);
     document.addEventListener('keydown', onMapCardEscPress);
   };
 
-  var closeCard = function () {
+  var close = function () {
     var card = map.querySelector('.map__card');
     if (card) {
       card.remove();
     }
+
+    var pinActive = map.querySelector('.map__pin--active');
+    if (pinActive) {
+      pinActive.classList.remove('map__pin--active');
+    }
+
     document.removeEventListener('keydown', onMapCardEscPress);
   };
 
   window.card = {
-    openCard: openCard,
-    closeCard: closeCard
+    open: open,
+    close: close
   };
 })();

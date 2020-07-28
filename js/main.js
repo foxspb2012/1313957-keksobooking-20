@@ -49,14 +49,14 @@
   };
 
   var onMainPinEnterPress = function (evt) {
-    if (evt.key === 'Enter') {
+    if (evt.key === window.extension.keyCode['enter']) {
       unlockPage();
     }
   };
 
   var lockPage = function () {
-    window.card.closeCard();
-    window.pin.deletePins();
+    window.card.close();
+    window.pin.remove();
     form.reset();
     form.classList.add('ad-form--disabled');
     formControls.forEach(function (control) {
@@ -95,10 +95,12 @@
   };
 
   var renderPins = function () {
-    var filteredPins = window.filter.getFilteredData(pins);
-    window.pin.deletePins();
-    window.pin.renderPins(filteredPins);
+    var filteredPins = window.filters.getFilteredData(pins);
+    window.pin.remove();
+    window.pin.render(filteredPins);
   };
+
+  var onFilterChange = window.debounce(renderPins);
 
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
@@ -111,8 +113,8 @@
   });
 
   filterForm.addEventListener('change', function () {
-    window.card.closeCard();
-    renderPins();
+    window.card.close();
+    onFilterChange();
   });
 
   lockPage();

@@ -32,6 +32,11 @@
     return result;
   };
 
+  var keyCode = {
+    enter: 'Enter',
+    escape: 'Escape',
+  };
+
   var guestEnding = function (guests) {
     var lastDigit = guests;
     if (guests >= 10) {
@@ -64,6 +69,7 @@
   window.extension = {
     nameRealty: nameRealty,
     features: features,
+    keyCode: keyCode,
     roomEnding: roomEnding,
     guestEnding: guestEnding,
     getRandomInteger: getRandomInteger,

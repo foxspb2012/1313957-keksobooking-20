@@ -8,7 +8,7 @@
   };
 
   var onSuccessEscPress = function (evt) {
-    if (evt.code === 'Escape') {
+    if (evt.code === window.extension.keyCode['escape']) {
       closeSuccess();
     }
   };
@@ -20,7 +20,7 @@
   };
 
   var onErrorEscPress = function (evt) {
-    if (evt.code === 'Escape') {
+    if (evt.code === window.extension.keyCode['escape']) {
       closeError();
     }
   };

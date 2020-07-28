@@ -12,7 +12,7 @@
   var housingFeatures = filterForm.querySelector('#housing-features');
 
 
-  function makeFilterAds(offers) {
+  var makeFilterAds = function (offers) {
     return offers.filter(function (offer) {
       return filterByType(offer)
           && filterByPrice(offer)
@@ -20,13 +20,13 @@
           && filterByGuests(offer)
           && filterByFeatures(offer);
     }).slice(0, PIN_COUNT);
-  }
+  };
 
-  function filterByType(element) {
+  var filterByType = function (element) {
     return housingType.value === element.offer.type || housingType.value === VALUE_DEFAULT;
-  }
+  };
 
-  function filterByPrice(item) {
+  var filterByPrice = function (item) {
     var priceValue = housingPrice.value;
     switch (priceValue) {
       case 'any':
@@ -40,38 +40,38 @@
       default:
         throw new Error('Неизвестный тип: ' + priceValue);
     }
-  }
+  };
 
-  function filterByRooms(item) {
+  var filterByRooms = function (item) {
     var roomsValue = housingRooms.value;
     if (roomsValue === 'any') {
       return true;
     } else {
       return item.offer.rooms === Number(roomsValue);
     }
-  }
+  };
 
-  function filterByGuests(item) {
+  var filterByGuests = function (item) {
     var guestsValue = housingGuests.value;
     if (guestsValue === 'any') {
       return true;
     } else {
       return item.offer.guests === Number(guestsValue);
     }
-  }
+  };
 
-  function filterByFeatures(item) {
+  var filterByFeatures = function (item) {
     var checkedFeatures = housingFeatures.querySelectorAll('input[name="features"]:checked');
     return Array.from(checkedFeatures).every(function (checkedFeature) {
       return item.offer.features.includes(checkedFeature.value);
     });
-  }
+  };
 
-  function getFilteredData(offers) {
+  var getFilteredData = function (offers) {
     return makeFilterAds(offers);
-  }
+  };
 
-  window.filter = {
+  window.filters = {
     getFilteredData: getFilteredData
   };
 })();
